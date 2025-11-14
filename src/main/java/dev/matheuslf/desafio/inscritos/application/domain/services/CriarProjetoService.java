@@ -1,0 +1,20 @@
+package dev.matheuslf.desafio.inscritos.application.domain.services;
+
+import dev.matheuslf.desafio.inscritos.application.domain.models.Projeto;
+import dev.matheuslf.desafio.inscritos.application.ports.input.CriarProjetoUseCase;
+import dev.matheuslf.desafio.inscritos.application.ports.output.ProjetoRepositoryPort;
+
+public class CriarProjetoService implements CriarProjetoUseCase {
+
+  private final ProjetoRepositoryPort projetoRepository;
+
+  public CriarProjetoService(ProjetoRepositoryPort projetoRepository) {
+    this.projetoRepository = projetoRepository;
+  }
+
+  @Override
+  public Projeto criarProjeto(Projeto projeto) {
+    return this.projetoRepository.salvar(projeto);
+  }
+
+}

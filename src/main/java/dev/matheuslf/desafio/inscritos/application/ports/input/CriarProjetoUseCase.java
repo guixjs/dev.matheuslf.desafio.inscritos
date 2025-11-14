@@ -1,0 +1,8 @@
+package dev.matheuslf.desafio.inscritos.application.ports.input;
+
+import dev.matheuslf.desafio.inscritos.application.domain.models.Projeto;
+
+public interface CriarProjetoUseCase {
+
+  Projeto criarProjeto(Projeto projeto);
+}
