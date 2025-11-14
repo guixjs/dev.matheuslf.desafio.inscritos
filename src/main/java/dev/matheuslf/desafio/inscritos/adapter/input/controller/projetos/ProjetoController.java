@@ -1,4 +1,4 @@
-package dev.matheuslf.desafio.inscritos.adapter.input.controller;
+package dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.matheuslf.desafio.inscritos.adapter.input.controller.dto.CriarProjetoDTORequest;
-import dev.matheuslf.desafio.inscritos.adapter.input.controller.dto.ProjetoResponseDTO;
-import dev.matheuslf.desafio.inscritos.adapter.input.controller.dto.mapper.ProjetoMapperInput;
+import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.CriarProjetoDTORequest;
+import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.ProjetoResponseDTO;
+import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.mapper.ProjetoMapperInput;
 import dev.matheuslf.desafio.inscritos.application.ports.input.CriarProjetoUseCase;
 import jakarta.validation.Valid;
 

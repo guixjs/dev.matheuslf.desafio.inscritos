@@ -1,4 +1,4 @@
-package dev.matheuslf.desafio.inscritos.application.domain.services;
+package dev.matheuslf.desafio.inscritos.application.domain.services.projetos;
 
 import dev.matheuslf.desafio.inscritos.application.domain.models.Projeto;
 import dev.matheuslf.desafio.inscritos.application.ports.input.CriarProjetoUseCase;

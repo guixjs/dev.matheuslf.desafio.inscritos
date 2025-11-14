@@ -1,4 +1,4 @@
-package dev.matheuslf.desafio.inscritos.adapter.input.controller.dto;
+package dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto;
 
 import java.time.LocalDate;
 

@@ -1,6 +1,8 @@
 package dev.matheuslf.desafio.inscritos.application.domain.models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Projeto {
 
@@ -9,6 +11,7 @@ public class Projeto {
   private String descricao;
   private LocalDate dataInicio;
   private LocalDate dataFim;
+  private List<Tarefa> tarefas = new ArrayList<>();
 
   public Projeto(Long id, String nome, String descricao, LocalDate dataInicio, LocalDate dataFim) {
     this.id = id;
@@ -38,4 +41,7 @@ public class Projeto {
     return dataFim;
   }
 
+  public List<Tarefa> getTarefas() {
+    return tarefas;
+  }
 }

@@ -1,7 +1,7 @@
-package dev.matheuslf.desafio.inscritos.adapter.input.controller.dto.mapper;
+package dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.mapper;
 
-import dev.matheuslf.desafio.inscritos.adapter.input.controller.dto.CriarProjetoDTORequest;
-import dev.matheuslf.desafio.inscritos.adapter.input.controller.dto.ProjetoResponseDTO;
+import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.CriarProjetoDTORequest;
+import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.ProjetoResponseDTO;
 import dev.matheuslf.desafio.inscritos.application.domain.models.Projeto;
 
 public class ProjetoMapperInput {
