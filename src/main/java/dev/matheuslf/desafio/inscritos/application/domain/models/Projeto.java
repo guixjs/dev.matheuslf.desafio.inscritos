@@ -44,4 +44,8 @@ public class Projeto {
   public List<Tarefa> getTarefas() {
     return tarefas;
   }
+
+  public void adicionarTarefa(Tarefa tarefa) {
+    this.tarefas.add(tarefa);
+  }
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.CriarProjetoDTORequest;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.ProjetoResponseDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.mapper.ProjetoMapperInput;
-import dev.matheuslf.desafio.inscritos.application.ports.input.CriarProjetoUseCase;
+import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.CriarProjetoUseCase;
 import jakarta.validation.Valid;
 
 @RestController
@@ -28,7 +28,5 @@ public class ProjetoController {
     var projetoCriado = criarProjetoUseCase.criarProjeto(ProjetoMapperInput.fromDTOToDomain(request));
     var responseDTO = ProjetoMapperInput.fromDomainToDTO(projetoCriado);
     return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
-
   }
-
 }

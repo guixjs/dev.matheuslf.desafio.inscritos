@@ -1,4 +1,4 @@
-package dev.matheuslf.desafio.inscritos.application.ports.input;
+package dev.matheuslf.desafio.inscritos.application.ports.input.projetos;
 
 import dev.matheuslf.desafio.inscritos.application.domain.models.Projeto;
 

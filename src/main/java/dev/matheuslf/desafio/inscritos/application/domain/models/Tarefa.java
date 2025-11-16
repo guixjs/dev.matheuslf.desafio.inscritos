@@ -4,29 +4,31 @@ import java.time.LocalDate;
 
 public class Tarefa {
   private Long id;
-  private Long titulo;
+  private String titulo;
   private String descricao;
   private Status status;
   private Prioridade prioridade;
   private LocalDate dataLimite;
-  private Long projetoId;
+  private Projeto projeto;
 
-  public Tarefa(Long id, Long titulo, String descricao, Status status, Prioridade prioridade, LocalDate dataLimite,
-      Long projetoId) {
+  public Tarefa(Long id, String titulo, String descricao, Status status, Prioridade prioridade, LocalDate dataLimite) {
     this.id = id;
     this.titulo = titulo;
     this.descricao = descricao;
     this.status = status;
     this.prioridade = prioridade;
     this.dataLimite = dataLimite;
-    this.projetoId = projetoId;
+  }
+
+  public void setProjeto(Projeto projeto) {
+    this.projeto = projeto;
   }
 
   public Long getId() {
     return id;
   }
 
-  public Long getTitulo() {
+  public String getTitulo() {
     return titulo;
   }
 
@@ -46,8 +48,8 @@ public class Tarefa {
     return dataLimite;
   }
 
-  public Long getProjetoId() {
-    return projetoId;
+  public Projeto getProjeto() {
+    return projeto;
   }
 
 }

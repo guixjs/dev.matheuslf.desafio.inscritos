@@ -1,7 +1,7 @@
 package dev.matheuslf.desafio.inscritos.application.domain.services.projetos;
 
 import dev.matheuslf.desafio.inscritos.application.domain.models.Projeto;
-import dev.matheuslf.desafio.inscritos.application.ports.input.CriarProjetoUseCase;
+import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.CriarProjetoUseCase;
 import dev.matheuslf.desafio.inscritos.application.ports.output.ProjetoRepositoryPort;
 
 public class CriarProjetoService implements CriarProjetoUseCase {
