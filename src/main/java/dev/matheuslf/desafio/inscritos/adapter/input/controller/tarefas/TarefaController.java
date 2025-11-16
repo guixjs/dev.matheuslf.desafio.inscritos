@@ -1,15 +1,17 @@
 package dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas;
 
-import java.time.LocalDate;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.matheuslf.desafio.inscritos.application.domain.models.Prioridade;
-import dev.matheuslf.desafio.inscritos.application.domain.models.Status;
-import dev.matheuslf.desafio.inscritos.application.domain.models.Tarefa;
+import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.CriarTarefaDTORequest;
+import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.TarefaResponseDTO;
+import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.mapper.TarefaMapperInput;
 import dev.matheuslf.desafio.inscritos.application.ports.input.tarefas.CriarTarefaUseCase;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/tarefas")
@@ -22,11 +24,12 @@ public class TarefaController {
   }
 
   @PostMapping("/nova")
-  public Tarefa criarTarefa() {
+  public ResponseEntity<TarefaResponseDTO> criarTarefa(@RequestBody @Valid CriarTarefaDTORequest request) {
 
-    var tarefa = new Tarefa(1L, "Título da task", "Descricao", Status.PENDENTE, Prioridade.ALTA, LocalDate.now());
-
-    return this.criarTarefaUseCase.criarTarefa(1L, tarefa);
+    var tarefaCriada = this.criarTarefaUseCase.criarTarefa(request.projetoId(),
+        TarefaMapperInput.fromDtoToDomain(request));
+    var response = TarefaMapperInput.fromDomainToDTO(tarefaCriada);
+    return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
   }
 

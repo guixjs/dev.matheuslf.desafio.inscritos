@@ -22,11 +22,13 @@ public class TarefaRepositoryImpl implements TarefaRepositoryPort {
     Projeto projeto = tarefa.getProjeto();
 
     var projetoJpa = projetoRepositoryJPA.getReferenceById(projeto.getId());
+
+    
     var tarefaEntity = new TarefaJPA(tarefa.getTitulo(), tarefa.getDescricao(), tarefa.getStatus(),
         tarefa.getPrioridade(), tarefa.getDataLimite(), projetoJpa);
     var tarefaSalva = tarefaRepositoryJPA.save(tarefaEntity);
     return new Tarefa(tarefaSalva.getId(), tarefaSalva.getTitulo(), tarefaSalva.getDescricao(),
-        tarefaSalva.getStatus(), tarefaSalva.getPrioridade(), tarefaSalva.getDataLimite());
+        tarefaSalva.getStatus(), tarefaSalva.getPrioridade(), tarefaSalva.getDataLimite(), projeto);
 
   }
 

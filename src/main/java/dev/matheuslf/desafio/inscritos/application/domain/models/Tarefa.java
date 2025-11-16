@@ -20,6 +20,17 @@ public class Tarefa {
     this.dataLimite = dataLimite;
   }
 
+  public Tarefa(Long id, String titulo, String descricao, Status status, Prioridade prioridade, LocalDate dataLimite,
+      Projeto projeto) {
+    this.id = id;
+    this.titulo = titulo;
+    this.descricao = descricao;
+    this.status = status;
+    this.prioridade = prioridade;
+    this.dataLimite = dataLimite;
+    this.projeto = projeto;
+  }
+
   public void setProjeto(Projeto projeto) {
     this.projeto = projeto;
   }
