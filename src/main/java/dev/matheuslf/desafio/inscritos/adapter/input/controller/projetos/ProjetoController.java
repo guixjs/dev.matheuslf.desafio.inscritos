@@ -5,12 +5,14 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.CriarProjetoDTORequest;
+import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.ProjetoDetalhadoResponseDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.ProjetoResponseDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.mapper.ProjetoMapperInput;
 import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.CriarProjetoUseCase;
@@ -46,4 +48,9 @@ public class ProjetoController {
     return ResponseEntity.ok().body(listaDTO);
   }
 
+  @GetMapping("/{id}")
+  public ResponseEntity<ProjetoDetalhadoResponseDTO> buscarDetalhesPorId(@PathVariable Long id) {
+    return null;
+
+  }
 }

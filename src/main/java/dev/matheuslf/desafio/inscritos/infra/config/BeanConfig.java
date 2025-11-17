@@ -10,9 +10,11 @@ import dev.matheuslf.desafio.inscritos.adapter.output.database.persistence.taref
 import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.CriarProjetoService;
 import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.ListarTodosProjetosService;
 import dev.matheuslf.desafio.inscritos.application.domain.services.tarefas.CriarTarefaService;
+import dev.matheuslf.desafio.inscritos.application.domain.services.tarefas.ListarTodasTarefasService;
 import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.CriarProjetoUseCase;
 import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.ListarTodosProjetosUseCase;
 import dev.matheuslf.desafio.inscritos.application.ports.input.tarefas.CriarTarefaUseCase;
+import dev.matheuslf.desafio.inscritos.application.ports.input.tarefas.ListarTodasTarefasUseCase;
 import dev.matheuslf.desafio.inscritos.application.ports.output.ProjetoRepositoryPort;
 import dev.matheuslf.desafio.inscritos.application.ports.output.TarefaRepositoryPort;
 
@@ -45,5 +47,10 @@ public class BeanConfig {
   @Bean
   public ListarTodosProjetosUseCase listarTodosProjetosUseCase(ProjetoRepositoryPort projetoRepository) {
     return new ListarTodosProjetosService(projetoRepository);
+  }
+
+  @Bean
+  public ListarTodasTarefasUseCase listarTodasTarefasUseCase(TarefaRepositoryPort tarefaRepository) {
+    return new ListarTodasTarefasService(tarefaRepository);
   }
 }

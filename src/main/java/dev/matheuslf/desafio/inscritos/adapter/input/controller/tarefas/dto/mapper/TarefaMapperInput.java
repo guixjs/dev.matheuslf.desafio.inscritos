@@ -3,6 +3,7 @@ package dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.map
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.mapper.ProjetoMapperInput;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.CriarTarefaDTORequest;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.TarefaResponseDTO;
+import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.TarefaResumoResponseDTO;
 import dev.matheuslf.desafio.inscritos.application.domain.models.Status;
 import dev.matheuslf.desafio.inscritos.application.domain.models.Tarefa;
 
@@ -29,6 +30,17 @@ public class TarefaMapperInput {
         tarefa.getPrioridade(),
         tarefa.getDataLimite(),
         projetoResponse);
+
+  }
+
+  public static TarefaResumoResponseDTO fromDomainToDTOResumido(Tarefa tarefa) {
+    return new TarefaResumoResponseDTO(
+        tarefa.getId(),
+        tarefa.getTitulo(),
+        tarefa.getDescricao(),
+        tarefa.getStatus(),
+        tarefa.getPrioridade(),
+        tarefa.getDataLimite());
 
   }
 }
