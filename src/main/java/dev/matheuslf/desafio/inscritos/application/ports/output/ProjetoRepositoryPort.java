@@ -10,4 +10,6 @@ public interface ProjetoRepositoryPort {
   Projeto buscarPorId(Long id);
 
   List<Projeto> listarTodos();
+
+  Projeto buscarPorIdDetalhado(Long id);
 }

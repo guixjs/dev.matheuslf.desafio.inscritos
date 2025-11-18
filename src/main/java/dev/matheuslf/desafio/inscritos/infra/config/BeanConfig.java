@@ -7,10 +7,12 @@ import dev.matheuslf.desafio.inscritos.adapter.output.database.persistence.proje
 import dev.matheuslf.desafio.inscritos.adapter.output.database.persistence.projetos.repository.ProjetoRepositoryJPA;
 import dev.matheuslf.desafio.inscritos.adapter.output.database.persistence.tarefas.repository.TarefaRepositoryImpl;
 import dev.matheuslf.desafio.inscritos.adapter.output.database.persistence.tarefas.repository.TarefaRepositoryJPA;
+import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.BuscarPorIdService;
 import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.CriarProjetoService;
 import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.ListarTodosProjetosService;
 import dev.matheuslf.desafio.inscritos.application.domain.services.tarefas.CriarTarefaService;
 import dev.matheuslf.desafio.inscritos.application.domain.services.tarefas.ListarTodasTarefasService;
+import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.BuscarPorIdUseCase;
 import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.CriarProjetoUseCase;
 import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.ListarTodosProjetosUseCase;
 import dev.matheuslf.desafio.inscritos.application.ports.input.tarefas.CriarTarefaUseCase;
@@ -52,5 +54,10 @@ public class BeanConfig {
   @Bean
   public ListarTodasTarefasUseCase listarTodasTarefasUseCase(TarefaRepositoryPort tarefaRepository) {
     return new ListarTodasTarefasService(tarefaRepository);
+  }
+
+  @Bean
+  public BuscarPorIdUseCase buscarPorIdUseCase(ProjetoRepositoryPort projetoRepository) {
+    return new BuscarPorIdService(projetoRepository);
   }
 }

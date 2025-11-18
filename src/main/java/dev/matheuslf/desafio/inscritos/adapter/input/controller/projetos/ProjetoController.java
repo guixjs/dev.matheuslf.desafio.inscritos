@@ -15,6 +15,7 @@ import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.Cri
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.ProjetoDetalhadoResponseDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.ProjetoResponseDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.mapper.ProjetoMapperInput;
+import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.BuscarPorIdUseCase;
 import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.CriarProjetoUseCase;
 import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.ListarTodosProjetosUseCase;
 import jakarta.validation.Valid;
@@ -25,10 +26,13 @@ public class ProjetoController {
 
   private final CriarProjetoUseCase criarProjetoUseCase;
   private final ListarTodosProjetosUseCase listarProjetos;
+  private final BuscarPorIdUseCase buscarPorId;
 
-  public ProjetoController(CriarProjetoUseCase criarProjetoUseCase, ListarTodosProjetosUseCase listar) {
+  public ProjetoController(CriarProjetoUseCase criarProjetoUseCase, ListarTodosProjetosUseCase listar,
+      BuscarPorIdUseCase buscarPorId) {
     this.listarProjetos = listar;
     this.criarProjetoUseCase = criarProjetoUseCase;
+    this.buscarPorId = buscarPorId;
   }
 
   @PostMapping("/novo")
@@ -50,7 +54,7 @@ public class ProjetoController {
 
   @GetMapping("/{id}")
   public ResponseEntity<ProjetoDetalhadoResponseDTO> buscarDetalhesPorId(@PathVariable Long id) {
-    return null;
-
+    var projetoDTO = ProjetoMapperInput.fromDomainToDetalhadoDTO(this.buscarPorId.buscarPorId(id));
+    return ResponseEntity.status(HttpStatus.OK).body(projetoDTO);
   }
 }

@@ -38,7 +38,7 @@ public class TarefaRepositoryImpl implements TarefaRepositoryPort {
   public List<Tarefa> listarTodas() {
     return this.tarefaRepositoryJPA.findAll()
         .stream()
-        .map(t -> TarefaMapperOutput.fromEntityToDomain(t))
+        .map(t -> TarefaMapperOutput.fromJpaToDomain(t))
         .toList();
   }
 

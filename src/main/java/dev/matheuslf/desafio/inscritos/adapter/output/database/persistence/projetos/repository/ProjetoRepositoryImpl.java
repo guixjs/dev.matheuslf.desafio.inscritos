@@ -1,7 +1,6 @@
 package dev.matheuslf.desafio.inscritos.adapter.output.database.persistence.projetos.repository;
 
 import java.util.List;
-
 import dev.matheuslf.desafio.inscritos.adapter.output.database.persistence.projetos.mapper.ProjetoMapperOutput;
 import dev.matheuslf.desafio.inscritos.application.domain.exceptions.ProjetoNaoEncontradoException;
 import dev.matheuslf.desafio.inscritos.application.domain.models.Projeto;
@@ -34,6 +33,14 @@ public class ProjetoRepositoryImpl implements ProjetoRepositoryPort {
     return projetosJPA.stream()
         .map(p -> ProjetoMapperOutput.fromJpaToDomain(p))
         .toList();
+  }
+
+  @Override
+  public Projeto buscarPorIdDetalhado(Long id) {
+    var projetoJpaOpt = this.jpaRepository.buscarProjetoPorIdDetalhado(id);
+    var projetoJpa = projetoJpaOpt.orElseThrow(() -> new ProjetoNaoEncontradoException(id));
+    return ProjetoMapperOutput.fromJpaToDomain(projetoJpa);
+
   }
 
 }

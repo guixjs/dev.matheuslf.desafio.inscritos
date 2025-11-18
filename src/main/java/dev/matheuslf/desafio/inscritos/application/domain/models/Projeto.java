@@ -48,4 +48,8 @@ public class Projeto {
   public void adicionarTarefa(Tarefa tarefa) {
     this.tarefas.add(tarefa);
   }
+
+  public Long contarTarefaPorStatus(Status status) {
+    return this.tarefas.stream().filter(t -> t.getStatus() == status).count();
+  }
 }
