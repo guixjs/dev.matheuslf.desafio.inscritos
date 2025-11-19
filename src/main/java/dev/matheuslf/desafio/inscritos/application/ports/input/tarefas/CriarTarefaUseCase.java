@@ -4,5 +4,5 @@ import dev.matheuslf.desafio.inscritos.application.domain.models.Tarefa;
 
 public interface CriarTarefaUseCase {
 
-  Tarefa criarTarefa(Long idProjeto, Tarefa tarefa);
+  Tarefa execute(Long idProjeto, Tarefa tarefa);
 }

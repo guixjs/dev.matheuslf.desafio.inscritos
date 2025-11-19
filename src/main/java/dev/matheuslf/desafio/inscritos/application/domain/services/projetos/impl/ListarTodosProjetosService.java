@@ -1,4 +1,4 @@
-package dev.matheuslf.desafio.inscritos.application.domain.services.projetos;
+package dev.matheuslf.desafio.inscritos.application.domain.services.projetos.impl;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class ListarTodosProjetosService implements ListarTodosProjetosUseCase {
   }
 
   @Override
-  public List<Projeto> listarTodos() {
+  public List<Projeto> execute() {
     return projetoRepository.listarTodos();
   }
 

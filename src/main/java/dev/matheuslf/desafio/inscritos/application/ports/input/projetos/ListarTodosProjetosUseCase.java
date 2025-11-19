@@ -5,5 +5,5 @@ import java.util.List;
 import dev.matheuslf.desafio.inscritos.application.domain.models.Projeto;
 
 public interface ListarTodosProjetosUseCase {
-  List<Projeto> listarTodos();
+  List<Projeto> execute();
 }

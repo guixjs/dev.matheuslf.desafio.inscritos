@@ -1,4 +1,4 @@
-package dev.matheuslf.desafio.inscritos.application.domain.services.tarefas;
+package dev.matheuslf.desafio.inscritos.application.domain.services.tarefas.impl;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class ListarTodasTarefasService implements ListarTodasTarefasUseCase {
   }
 
   @Override
-  public List<Tarefa> listar() {
+  public List<Tarefa> execute() {
     return this.tarefaRepository.listarTodas();
   }
 

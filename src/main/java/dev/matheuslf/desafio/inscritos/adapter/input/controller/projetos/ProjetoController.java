@@ -15,36 +15,29 @@ import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.Cri
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.ProjetoDetalhadoResponseDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.ProjetoResponseDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.mapper.ProjetoMapperInput;
-import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.BuscarPorIdUseCase;
-import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.CriarProjetoUseCase;
-import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.ListarTodosProjetosUseCase;
+import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.FacadeProjeto;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/projetos")
 public class ProjetoController {
 
-  private final CriarProjetoUseCase criarProjetoUseCase;
-  private final ListarTodosProjetosUseCase listarProjetos;
-  private final BuscarPorIdUseCase buscarPorId;
+  private final FacadeProjeto projetoFacade;
 
-  public ProjetoController(CriarProjetoUseCase criarProjetoUseCase, ListarTodosProjetosUseCase listar,
-      BuscarPorIdUseCase buscarPorId) {
-    this.listarProjetos = listar;
-    this.criarProjetoUseCase = criarProjetoUseCase;
-    this.buscarPorId = buscarPorId;
+  public ProjetoController(FacadeProjeto projetoFacade) {
+    this.projetoFacade = projetoFacade;
   }
 
   @PostMapping("/novo")
   public ResponseEntity<ProjetoResponseDTO> criarProjeto(@RequestBody @Valid CriarProjetoDTORequest request) {
-    var projetoCriado = criarProjetoUseCase.criarProjeto(ProjetoMapperInput.fromDTOToDomain(request));
+    var projetoCriado = projetoFacade.criarProjeto(ProjetoMapperInput.fromDTOToDomain(request));
     var responseDTO = ProjetoMapperInput.fromDomainToDTO(projetoCriado);
     return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
   }
 
   @GetMapping()
   public ResponseEntity<List<ProjetoResponseDTO>> listarTodos() {
-    var lista = this.listarProjetos.listarTodos();
+    var lista = this.projetoFacade.listarTodos();
     if (lista.isEmpty()) {
       return ResponseEntity.noContent().build();
     }
@@ -54,7 +47,7 @@ public class ProjetoController {
 
   @GetMapping("/{id}")
   public ResponseEntity<ProjetoDetalhadoResponseDTO> buscarDetalhesPorId(@PathVariable Long id) {
-    var projetoDTO = ProjetoMapperInput.fromDomainToDetalhadoDTO(this.buscarPorId.buscarPorId(id));
+    var projetoDTO = ProjetoMapperInput.fromDomainToDetalhadoDTO(this.projetoFacade.buscarPorId(id));
     return ResponseEntity.status(HttpStatus.OK).body(projetoDTO);
   }
 }

@@ -4,5 +4,5 @@ import dev.matheuslf.desafio.inscritos.application.domain.models.Projeto;
 
 public interface CriarProjetoUseCase {
 
-  Projeto criarProjeto(Projeto projeto);
+  Projeto execute(Projeto projeto);
 }

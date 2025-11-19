@@ -7,11 +7,13 @@ import dev.matheuslf.desafio.inscritos.adapter.output.database.persistence.proje
 import dev.matheuslf.desafio.inscritos.adapter.output.database.persistence.projetos.repository.ProjetoRepositoryJPA;
 import dev.matheuslf.desafio.inscritos.adapter.output.database.persistence.tarefas.repository.TarefaRepositoryImpl;
 import dev.matheuslf.desafio.inscritos.adapter.output.database.persistence.tarefas.repository.TarefaRepositoryJPA;
-import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.BuscarPorIdService;
-import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.CriarProjetoService;
-import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.ListarTodosProjetosService;
-import dev.matheuslf.desafio.inscritos.application.domain.services.tarefas.CriarTarefaService;
-import dev.matheuslf.desafio.inscritos.application.domain.services.tarefas.ListarTodasTarefasService;
+import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.FacadeProjeto;
+import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.impl.BuscarPorIdService;
+import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.impl.CriarProjetoService;
+import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.impl.ListarTodosProjetosService;
+import dev.matheuslf.desafio.inscritos.application.domain.services.tarefas.FacadeTarefa;
+import dev.matheuslf.desafio.inscritos.application.domain.services.tarefas.impl.CriarTarefaService;
+import dev.matheuslf.desafio.inscritos.application.domain.services.tarefas.impl.ListarTodasTarefasService;
 import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.BuscarPorIdUseCase;
 import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.CriarProjetoUseCase;
 import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.ListarTodosProjetosUseCase;
@@ -59,5 +61,17 @@ public class BeanConfig {
   @Bean
   public BuscarPorIdUseCase buscarPorIdUseCase(ProjetoRepositoryPort projetoRepository) {
     return new BuscarPorIdService(projetoRepository);
+  }
+
+  @Bean
+  public FacadeProjeto facadeProjeto(CriarProjetoUseCase criarProjetoUseCase, ListarTodosProjetosUseCase listar,
+      BuscarPorIdUseCase buscarPorIdUseCase) {
+    return new FacadeProjeto(criarProjetoUseCase, listar, buscarPorIdUseCase);
+  }
+
+  @Bean
+  public FacadeTarefa facadeTarefa(CriarTarefaUseCase criarTarefaUseCase,
+      ListarTodasTarefasUseCase listarTodasTarefasUseCase) {
+    return new FacadeTarefa(criarTarefaUseCase, listarTodasTarefasUseCase);
   }
 }

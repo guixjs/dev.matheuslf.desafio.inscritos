@@ -5,5 +5,5 @@ import java.util.List;
 import dev.matheuslf.desafio.inscritos.application.domain.models.Tarefa;
 
 public interface ListarTodasTarefasUseCase {
-  List<Tarefa> listar();
+  List<Tarefa> execute();
 }

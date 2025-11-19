@@ -1,4 +1,4 @@
-package dev.matheuslf.desafio.inscritos.application.domain.services.tarefas;
+package dev.matheuslf.desafio.inscritos.application.domain.services.tarefas.impl;
 
 import dev.matheuslf.desafio.inscritos.application.domain.models.Projeto;
 import dev.matheuslf.desafio.inscritos.application.domain.models.Tarefa;
@@ -17,7 +17,7 @@ public class CriarTarefaService implements CriarTarefaUseCase {
   }
 
   @Override
-  public Tarefa criarTarefa(Long idProjeto, Tarefa tarefa) {
+  public Tarefa execute(Long idProjeto, Tarefa tarefa) {
     Projeto projeto = projetoRepositoryPort.buscarPorId(idProjeto);
     projeto.adicionarTarefa(tarefa);
     tarefa.setProjeto(projeto);

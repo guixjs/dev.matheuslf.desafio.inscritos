@@ -1,4 +1,4 @@
-package dev.matheuslf.desafio.inscritos.application.domain.services.projetos;
+package dev.matheuslf.desafio.inscritos.application.domain.services.projetos.impl;
 
 import dev.matheuslf.desafio.inscritos.application.domain.models.Projeto;
 import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.BuscarPorIdUseCase;
@@ -13,7 +13,7 @@ public class BuscarPorIdService implements BuscarPorIdUseCase {
   }
 
   @Override
-  public Projeto buscarPorId(Long id) {
+  public Projeto execute(Long id) {
     return this.projetoRepository.buscarPorIdDetalhado(id);
   }
 
