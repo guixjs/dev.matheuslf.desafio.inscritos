@@ -21,6 +21,18 @@ public class Projeto {
     this.dataFim = dataFim;
   }
 
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
+
+  public void setDescricao(String descricao) {
+    this.descricao = descricao;
+  }
+
+  public void setDataFim(LocalDate dataFim) {
+    this.dataFim = dataFim;
+  }
+
   public Long getId() {
     return id;
   }

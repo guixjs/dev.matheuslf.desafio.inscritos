@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.CriarProjetoDTORequest;
+import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.AtualizarProjetoRequestDTO;
+import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.CriarProjetoRequestDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.ProjetoDetalhadoResponseDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.ProjetoResponseDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.mapper.ProjetoMapperInput;
 import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.FacadeProjeto;
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/projetos")
@@ -30,7 +32,7 @@ public class ProjetoController {
   }
 
   @PostMapping("/novo")
-  public ResponseEntity<ProjetoResponseDTO> criarProjeto(@RequestBody @Valid CriarProjetoDTORequest request) {
+  public ResponseEntity<ProjetoResponseDTO> criarProjeto(@RequestBody @Valid CriarProjetoRequestDTO request) {
     var projetoCriado = projetoFacade.criarProjeto(ProjetoMapperInput.fromDTOToDomain(request));
     var responseDTO = ProjetoMapperInput.fromDomainToDTO(projetoCriado);
     return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
@@ -56,5 +58,12 @@ public class ProjetoController {
   public ResponseEntity<Void> deletarProjeto(@PathVariable Long id) {
     this.projetoFacade.deletar(id);
     return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<ProjetoResponseDTO> atualizarProjeto(@PathVariable Long id,
+      @RequestBody AtualizarProjetoRequestDTO dto) {
+    var response = this.projetoFacade.atualizar(id, ProjetoMapperInput.fromAtualizarDTOToAtualizarDomain(dto));
+    return ResponseEntity.status(HttpStatus.OK).body(ProjetoMapperInput.fromDomainToDTO(response));
   }
 }

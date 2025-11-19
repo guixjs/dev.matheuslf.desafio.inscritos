@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.CriarTarefaDTORequest;
+import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.CriarTarefaRequestDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.TarefaResponseDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.TarefaResumoResponseDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.mapper.TarefaMapperInput;
@@ -29,7 +29,7 @@ public class TarefaController {
   }
 
   @PostMapping("/nova")
-  public ResponseEntity<TarefaResponseDTO> criarTarefa(@RequestBody @Valid CriarTarefaDTORequest request) {
+  public ResponseEntity<TarefaResponseDTO> criarTarefa(@RequestBody @Valid CriarTarefaRequestDTO request) {
 
     var tarefaCriada = this.tarefaFacade.criarTarefa(request.projetoId(),
         TarefaMapperInput.fromDtoToDomain(request));

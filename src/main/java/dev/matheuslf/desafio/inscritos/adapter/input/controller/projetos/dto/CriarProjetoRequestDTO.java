@@ -1,0 +1,16 @@
+package dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto;
+
+import java.time.LocalDate;
+
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+public record CriarProjetoRequestDTO(
+        @NotBlank(message = "O nome do projeto é obrigatório") @Size(min = 3, message = "O nome do projeto deve ter no mínimo 3 caracteres") @Size(max = 100, message = "O nome do projeto deve ter no máximo 100 caracteres") String nome,
+        String descricao,
+        @NotNull(message = "A data de início do projeto é obrigatória") LocalDate dataInicio,
+        @Future LocalDate dataFim) {
+
+}

@@ -6,10 +6,12 @@ import org.springframework.context.annotation.Configuration;
 import dev.matheuslf.desafio.inscritos.adapter.output.database.persistence.projetos.repository.ProjetoRepositoryImpl;
 import dev.matheuslf.desafio.inscritos.adapter.output.database.persistence.projetos.repository.ProjetoRepositoryJPA;
 import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.FacadeProjeto;
+import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.impl.AtualizarProjetoService;
 import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.impl.BuscarPorIdService;
 import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.impl.CriarProjetoService;
 import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.impl.DeletarProjetoService;
 import dev.matheuslf.desafio.inscritos.application.domain.services.projetos.impl.ListarTodosProjetosService;
+import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.AtualizarProjetoUseCase;
 import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.BuscarPorIdUseCase;
 import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.CriarProjetoUseCase;
 import dev.matheuslf.desafio.inscritos.application.ports.input.projetos.DeletarProjetoUseCase;
@@ -46,7 +48,14 @@ public class ProjetoBeanConfig {
 
   @Bean
   public FacadeProjeto facadeProjeto(CriarProjetoUseCase criarProjetoUseCase, ListarTodosProjetosUseCase listarUseCase,
-      BuscarPorIdUseCase buscarPorIdUseCase, DeletarProjetoUseCase deletarUseCase) {
-    return new FacadeProjeto(criarProjetoUseCase, listarUseCase, buscarPorIdUseCase, deletarUseCase);
+      BuscarPorIdUseCase buscarPorIdUseCase, DeletarProjetoUseCase deletarUseCase,
+      AtualizarProjetoUseCase atualizarProjetoUseCase) {
+    return new FacadeProjeto(criarProjetoUseCase, listarUseCase, buscarPorIdUseCase, deletarUseCase,
+        atualizarProjetoUseCase);
+  }
+
+  @Bean
+  public AtualizarProjetoUseCase atualizarProjetoUseCase(ProjetoRepositoryPort projetoRepository) {
+    return new AtualizarProjetoService(projetoRepository);
   }
 }

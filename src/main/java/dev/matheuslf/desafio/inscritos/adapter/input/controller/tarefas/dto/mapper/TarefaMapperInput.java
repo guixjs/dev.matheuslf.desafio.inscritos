@@ -1,7 +1,7 @@
 package dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.mapper;
 
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.mapper.ProjetoMapperInput;
-import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.CriarTarefaDTORequest;
+import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.CriarTarefaRequestDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.TarefaResponseDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.TarefaResumoResponseDTO;
 import dev.matheuslf.desafio.inscritos.application.domain.models.Status;
@@ -9,7 +9,7 @@ import dev.matheuslf.desafio.inscritos.application.domain.models.Tarefa;
 
 public class TarefaMapperInput {
 
-  public static Tarefa fromDtoToDomain(CriarTarefaDTORequest dto) {
+  public static Tarefa fromDtoToDomain(CriarTarefaRequestDTO dto) {
     return new Tarefa(
         null,
         dto.titulo(),

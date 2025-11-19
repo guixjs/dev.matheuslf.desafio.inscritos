@@ -2,17 +2,19 @@ package dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.ma
 
 import java.util.List;
 
-import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.CriarProjetoDTORequest;
+import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.AtualizarProjetoRequestDTO;
+import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.CriarProjetoRequestDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.ProjetoDetalhadoResponseDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.projetos.dto.ProjetoResponseDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.TarefaResumoResponseDTO;
 import dev.matheuslf.desafio.inscritos.adapter.input.controller.tarefas.dto.mapper.TarefaMapperInput;
+import dev.matheuslf.desafio.inscritos.application.domain.models.AtualizarProjetoDomain;
 import dev.matheuslf.desafio.inscritos.application.domain.models.Projeto;
 import dev.matheuslf.desafio.inscritos.application.domain.models.Status;
 
 public class ProjetoMapperInput {
 
-  public static Projeto fromDTOToDomain(CriarProjetoDTORequest dto) {
+  public static Projeto fromDTOToDomain(CriarProjetoRequestDTO dto) {
     return new Projeto(
         null,
         dto.nome(),
@@ -52,5 +54,12 @@ public class ProjetoMapperInput {
         tarefasEmAndamento,
         tarefasConcluidas,
         tarefasDoProjeto);
+  }
+
+  public static AtualizarProjetoDomain fromAtualizarDTOToAtualizarDomain(AtualizarProjetoRequestDTO dto) {
+    return new AtualizarProjetoDomain(
+        dto.nome(),
+        dto.descricao(),
+        dto.dataFim());
   }
 }
