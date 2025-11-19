@@ -43,4 +43,11 @@ public class ProjetoRepositoryImpl implements ProjetoRepositoryPort {
 
   }
 
+  @Override
+  public void deletar(Long id) {
+    var projeto = this.jpaRepository.findById(id)
+        .orElseThrow(() -> new ProjetoNaoEncontradoException(id));
+    this.jpaRepository.delete(projeto);
+  }
+
 }

@@ -12,4 +12,6 @@ public interface ProjetoRepositoryPort {
   List<Projeto> listarTodos();
 
   Projeto buscarPorIdDetalhado(Long id);
+
+  void deletar(Long id);
 }
